@@ -1,0 +1,1 @@
+export function* expand(pool:readonly number[], k:number):Generator<number[]>{const n=pool.length;if(k>n||k<0)return;const idx=Array.from({length:k},(_,i)=>i);for(;;){yield idx.map(i=>pool[i]);let i=k-1;while(i>=0&&idx[i]===i+n-k)i--;if(i<0)return;idx[i]++;for(let j=i+1;j<k;j++)idx[j]=idx[j-1]+1;}}

@@ -1,0 +1,2 @@
+export class AppError extends Error { constructor(public readonly code:string,message:string,public readonly statusCode=400,public readonly extensions:Record<string,unknown>={}){super(message);this.name=new.target.name;Object.setPrototypeOf(this,new.target.prototype);} }
+export class InfeasibleFiltersError extends AppError { constructor(violations:unknown[]){super('INFEASIBLE_FILTERS','Nenhuma combinação satisfaz simultaneamente as restrições informadas.',422,{violations});} }
