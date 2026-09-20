@@ -1,0 +1,17 @@
+[
+  {
+    "concurso": 2700,
+    "data": "2026-09-15",
+    "dezenas": [3, 7, 12, 24, 31, 45],
+    "premiacoes": { "sena": 0, "quina": 2, "quadra": 120 },
+    "acumulado": true,
+    "valorEstimadoProximoConcurso": 45000000
+  },
+  {
+    "concurso": 2699,
+    "data": "2026-09-12",
+    "dezenas": [1, 5, 22, 33, 41, 50],
+    "acumulado": false,
+    "valorEstimadoProximoConcurso": 30000000
+  }
+]

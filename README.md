@@ -241,3 +241,15 @@ Os testes cobrem invariantes de tamanho, unicidade, ordenação, geração deter
 ## 8. Licença e escopo
 
 Este software é um gerador/analisador combinatório sem relação institucional com a Caixa Econômica Federal. Não integra a API da Caixa e não persiste histórico. Resultados oficiais devem ser informados pelo cliente em `drawnNumbers`/`historicDraws`. Consulte `SSD-lotofacil-api-2.md` para a especificação completa, fundamentos matemáticos, decisões arquiteturais e roadmap.
+
+## Histórico de resultados
+
+O backend expõe `GET /api/history`, que lê `db/resultados.json` uma vez por requisição e retorna os resultados paginados. A resposta contém `total`, `page`, `limit`, `totalPages` e `data`.
+
+Parâmetros opcionais: `dataInicio`, `dataFim`, `concurso`, `concursoMin`, `concursoMax`, `page`, `limit` e `order` (`asc` ou `desc`). As datas usam `YYYY-MM-DD`, o intervalo é inclusivo e `limit` é limitado a 500. Parâmetros inválidos retornam `400`; arquivo ausente retorna `404`; JSON ilegível retorna `500`.
+
+```bash
+curl 'http://localhost:3000/api/history?dataInicio=2026-01-01&dataFim=2026-09-20&limit=50&order=desc'
+```
+
+O SSD recebido pressupõe uma aplicação Next.js com Pages Router e páginas frontend. Este repositório é exclusivamente uma API Express/TypeScript: não contém `pages/`, Navbar, nem as rotas `/filtros`, `/analisar`, `/conferir`, `/ferramentas` ou `/carteira`. Por isso, não foram criados redirects ou removidos arquivos inexistentes; a página frontend `/history` deverá consumir este contrato em um repositório de frontend separado.
